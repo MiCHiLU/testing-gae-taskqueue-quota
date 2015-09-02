@@ -1,0 +1,27 @@
+application: testing-gae-taskqueue-quota
+version: 1
+runtime: go
+api_version: go1
+threadsafe: true
+
+instance_class: F1
+automatic_scaling:
+  max_idle_instances: 1
+
+handlers:
+- url: /_ah/.*
+  script: _go_app
+  login: admin
+
+skip_files:
+- |
+  ^(.*/)?(
+  (#.*#)|
+  (.*\.sw?)|
+  (.*\.yaml)|
+  (.*~)|
+  (LICENSE)|
+  (\..*)|
+  (_test.go)|
+  (tests/.*)|
+  )$
